@@ -1,12 +1,13 @@
 from typing import List, Optional
 from uuid import UUID
 from pydantic import BaseModel
+from service.plumbing.db.base_class import Base
 
 class Role(BaseModel):
     name: str
     permissions: List[str]
 
-class User(BaseModel):
+class User(Base):
     id: UUID
     email: str
     firstname: str

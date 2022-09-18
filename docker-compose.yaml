@@ -1,0 +1,30 @@
+# FTS LOCAL DOCKER DEVELOPMENT ENV
+version: "3.9"
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: development
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: development
+    volumes:
+      - my-db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+      
+  fts-bff:
+    platform: linux/amd64
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+  
+  
+  
+volumes:
+  ftsdata:
+  logvolume01:
+  my-db:
+  #ftsexcheck:

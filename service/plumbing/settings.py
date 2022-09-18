@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
     
     # Database
-    pg_dsn: PostgresDsn = 'postgres://user:pass@postgres:5432/ftsbffwebadmin'
+    pg_dsn: PostgresDsn = 'postgres://development:password@postgres:5432/development'
 
     # FreeTakServer configuration
     fts_url: AnyHttpUrl

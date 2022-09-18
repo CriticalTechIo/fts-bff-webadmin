@@ -38,7 +38,7 @@ COPY --chown=ftsbff:ftsbff docker-entrypoint.sh ./
 RUN chmod +x ./docker-entrypoint.sh
 
 ENTRYPOINT ./docker-entrypoint.sh $0 $@
-CMD [ "uvicorn", "service.main:app"]
+CMD [ "uvicorn", "service.main:app", "--host", "0.0.0.0"]
 
 #RUN . /venv/bin/activate && pip install *.whl
 #CMD ["./docker-entrypoint.sh"]
