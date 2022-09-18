@@ -1,17 +1,11 @@
 #!/bin/sh
 
-# if [ "$DATABASE" = "postgres" ]
-# then
-#     echo "Waiting for postgres..."
+set -e
 
-#     while ! nc -z $SQL_HOST $SQL_PORT; do
-#       sleep 0.1
-#     done
+# activate our virtual environment here
+. /venv/bin/activate && pip install *.whl
 
-#     echo "PostgreSQL started"
-# fi
+# You can put other setup logic here
 
-# python manage.py migrate
-uvicorn service.main:app --reload
+# Evaluating passed command:
 exec "$@"
-

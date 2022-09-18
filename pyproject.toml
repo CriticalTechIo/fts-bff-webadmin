@@ -5,7 +5,10 @@ description = "A BFF pattern application to integrate a web frontend for adminis
 authors = ["Simon Blomsterlund <simon@alarmr.io>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "fts_bff_webadmin"}]
+packages = [
+    {include = "fts_webadmin_api"},
+    {include = "service"}
+    ]
 
 [tool.poetry.dependencies]
 python = "^3.8"

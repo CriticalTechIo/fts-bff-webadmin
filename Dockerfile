@@ -12,7 +12,7 @@ FROM base as builder
 ENV PIP_DEFAULT_TIMEOUT=100 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_NO_CACHE_DIR=1 \
-    POETRY_VERSION=1.1.3
+    POETRY_VERSION=1.2.1
 
 RUN pip install "poetry==$POETRY_VERSION"
 RUN python -m venv /venv
@@ -25,9 +25,20 @@ RUN . /venv/bin/activate && poetry build
 
 FROM base as final
 
-COPY --from=builder /venv /venv
-COPY --from=builder /app/dist .
-COPY docker-entrypoint.sh ./
+WORKDIR /app
 
-RUN . /venv/bin/activate && pip install *.whl
-CMD ["./docker-entrypoint.sh"]
+RUN groupadd -g 1500 ftsbff && \
+    useradd -m -u 1500 -g ftsbff ftsbff
+
+USER ftsbff
+
+COPY --chown=ftsbff:ftsbff --from=builder /venv /venv
+COPY --chown=ftsbff:ftsbff --from=builder /app/dist .
+COPY --chown=ftsbff:ftsbff docker-entrypoint.sh ./
+RUN chmod +x ./docker-entrypoint.sh
+
+ENTRYPOINT ./docker-entrypoint.sh $0 $@
+CMD [ "uvicorn", "service.main:app"]
+
+#RUN . /venv/bin/activate && pip install *.whl
+#CMD ["./docker-entrypoint.sh"]

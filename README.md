@@ -39,7 +39,7 @@ Take a look around in the codebase.
 - [X] Setup repo
 - [X] Write introdury readme
 - [X] Get started on implementation
-- [ ] Setup docker
+- [X] Setup docker
 - [ ] Prepare for TDD
 - [ ] Create user model and endpoints
 - [ ] Create auth functionality
