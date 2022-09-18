@@ -9,7 +9,8 @@ It strives to solve the following issues in FTS-UI atm:
 - Clearer definitions on needed variables
 
 ## Architectural overview
-|----|----|
+|       |        |
+|------------|-------------| 
 | ![Arch](https://github.com/CriticalTechIo/fts-bff-webadmin/blob/main/docs/ARCH.png?raw=true) | ![Overview](https://github.com/CriticalTechIo/fts-bff-webadmin/blob/main/docs/OVERVIEW.png?raw=true) |
 |![APIS](https://github.com/CriticalTechIo/fts-bff-webadmin/blob/main/docs/APIS.png?raw=true)|||
 
