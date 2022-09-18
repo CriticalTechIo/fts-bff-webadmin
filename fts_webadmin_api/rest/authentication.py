@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 
-class Token(BaseModel):
+class RestToken(BaseModel):
     access_token: str
     token_type: str
 
-class LoginForm(BaseModel):
+class RestLoginForm(BaseModel):
     username: str
     password: str
